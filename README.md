@@ -1,2 +1,2 @@
-# realeaux_array
-Create preturbed realeaux triangle array
+# reuleaux_array
+Create preturbed reuleaux triangle array
