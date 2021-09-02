@@ -2,7 +2,7 @@
 # Author: Adam Lozinsky
 # Date: June 18, 2019
 # Description: Generates optimal antenna array designs based on 
-#	       perturbed realeaux triangles (Keto, 1997).
+#	       perturbed reuleaux triangles (Keto, 1997).
 
 
 import numpy as np
@@ -32,7 +32,7 @@ DATA_DUMP = True
 FPS = 0.01
 
 
-def realeaux_boundary(n=3, A=48, resolution=0.001):
+def reuleaux_boundary(n=3, A=48, resolution=0.001):
 	b = np.arange(0, 2 * PI, resolution)	# Simplification
 	a = np.floor(n*b/(2*PI))				# Simplification
 	A = A * 0.5773502811646716				# Width
@@ -201,7 +201,7 @@ def circle_boundary(r=1.0):
 
 if __name__ == "__main__":
 	si = smart_index()
-	x_bound, y_bound = realeaux_boundary(3, 48, 0.001)
+	x_bound, y_bound = reuleaux_boundary(3, 48, 0.001)
 	initial_posx, initial_posy, weight_x, weight_y = initial_positions(x_bound, y_bound)
 	weight_x = initial_posx
 	weight_y = initial_posy
@@ -241,7 +241,7 @@ if __name__ == "__main__":
 			mpl.figure(3)
 			mpl.clf()
 			mpl.plot(x_bound, y_bound)
-			mpl.title("Realeaux Triangle")
+			mpl.title("Reuleaux Triangle")
 			mpl.axis([-40,40,-30,25])
 			mpl.scatter(ant_posx, ant_posy, marker='v', color='red')
 			mpl.draw()
@@ -269,7 +269,7 @@ if __name__ == "__main__":
 	# Create Plots
 	mpl.figure(1)
 	mpl.plot(x_bound, y_bound)
-	mpl.title("Realeaux Triangle")
+	mpl.title("Reuleaux Triangle")
 	mpl.scatter(ant_posx, ant_posy, marker='v', color='red')
 	mpl.axis('equal')
 
